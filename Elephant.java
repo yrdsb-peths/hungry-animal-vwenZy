@@ -14,6 +14,20 @@ public class Elephant extends Actor
         if(Greenfoot.isKeyDown("space")){
             turn(2);
         }
+        if(Greenfoot.isKeyDown("s")){
+            moveDown();
+        }
+        if(Greenfoot.isKeyDown("w")){
+            moveUp();
+        }
+        if(isTouching(Apple.class)){
+            removeTouching(Apple.class);
+        }
     }
-    
+    public void moveDown(){
+        setLocation(getX(), getY()+2);
+    }
+    public void moveUp(){
+        setLocation(getX(), getY()-2);
+    }
 }
