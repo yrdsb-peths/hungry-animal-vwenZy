@@ -44,7 +44,7 @@ public class Elephant extends Actor
         setImage(flyRight[0]);
     }
     
-    /*
+    /**
      * Animate the elephant
      */
     int imageIndex = 0;
