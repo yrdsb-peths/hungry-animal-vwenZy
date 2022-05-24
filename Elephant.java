@@ -19,7 +19,7 @@ public class Elephant extends Actor
     
     // Direction the elephant is facing.
     String facing = "right";
-    
+    SimpleTimer animationTimer = new SimpleTimer();
     /**
      * Constructor - The code that gets run one time when object is created.
      */
@@ -37,6 +37,9 @@ public class Elephant extends Actor
             flyLeft[i].mirrorHorizontally();
             flyLeft[i].scale(80, 70);
         }
+        
+        animationTimer.mark();
+        
         // Initial elephant image.
         setImage(flyRight[0]);
     }
@@ -47,6 +50,10 @@ public class Elephant extends Actor
     int imageIndex = 0;
     public void animateElephant()
     {
+        if(animationTimer.millisElapsed() < 100) {
+            return;
+        }
+        animationTimer.mark();
         if(facing.equals("right")) {
             setImage(flyRight[imageIndex]);
             imageIndex = (imageIndex + 1) % flyRight.length;
@@ -60,11 +67,11 @@ public class Elephant extends Actor
     {
         // Add your action code here.
         if(Greenfoot.isKeyDown("left")) {
-            move(-1);
+            move(-5);
             facing = "left";
         }
         if(Greenfoot.isKeyDown("right")) {
-            move(1);
+            move(5);
             facing = "right";
         }
         if(Greenfoot.isKeyDown("down")) {
